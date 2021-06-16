@@ -8,10 +8,12 @@ class TransferItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      leading: Icon(Icons.monetization_on),
-      title: Text(data.value.toString()),
-      subtitle: Text(data.accountNumber.toString()),
+    return Card(
+      child: ListTile(
+        leading: Icon(Icons.monetization_on),
+        title: Text(data.value.toString()),
+        subtitle: Text(data.accountNumber.toString()),
+      ),
     );
   }
 }
