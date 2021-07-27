@@ -11,8 +11,8 @@ class TransferItem extends StatelessWidget {
     return Card(
       child: ListTile(
         leading: Icon(Icons.monetization_on),
-        title: Text(data.value.toString()),
-        subtitle: Text(data.accountNumber.toString()),
+        title: Text('Valor ${data.value.toString()}'),
+        subtitle: Text('Conta ${data.accountNumber.toString()}'),
       ),
     );
   }

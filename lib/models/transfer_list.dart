@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 class TransferList extends ChangeNotifier {
   List<TransferData> _transferList = [];
 
-  List<TransferData> get transferList => _transferList;
+  List<TransferData> get list => _transferList;
 
   void addTransfer(TransferData newTransfer) {
-    transferList.add(newTransfer);
+    list.add(newTransfer);
     notifyListeners();
   }
 }

@@ -5,6 +5,9 @@ class Amount with ChangeNotifier {
 
   Amount(this._value) : super();
 
+
+  double get value => _value;
+
   void add(double value) {
     _value += value;
     notifyListeners();

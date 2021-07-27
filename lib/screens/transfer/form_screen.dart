@@ -57,18 +57,19 @@ class TransferFormScreen extends StatelessWidget {
       Provider.of<TransferList>(context, listen: false)
           .addTransfer(newTransfer);
 
-      final wasRemoved =
-          Provider.of<Amount>(context, listen: false).remove(newTransfer.value);
+      var amount = Provider.of<Amount>(context, listen: false);
+      final wasRemoved = amount.remove(newTransfer.value);
 
       if (wasRemoved)
         Navigator.pop(context);
       else
-        _showErrorMessage(context);
+        _showErrorMessage(context, amount);
     }
   }
 
-  void _showErrorMessage(BuildContext context) {
-    final snackBar = SnackBar(content: Text('Saldo insuficiente!'));
+  void _showErrorMessage(BuildContext context, Amount amount) {
+    final snackBar = SnackBar(
+        content: Text('Saldo insuficiente! Seu saldo é de ${amount.value}'));
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 }
