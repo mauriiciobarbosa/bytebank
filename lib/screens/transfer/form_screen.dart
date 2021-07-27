@@ -1,6 +1,9 @@
 import 'package:bytebank/components/transfer_field.dart';
+import 'package:bytebank/models/amount.dart';
 import 'package:bytebank/models/transfer_data.dart';
+import 'package:bytebank/models/transfer_list.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 const _titleAppBar = 'Criando Transferência';
 const _accountNumberLabel = 'Número da Conta';
@@ -51,7 +54,21 @@ class TransferFormScreen extends StatelessWidget {
     if (accountNumber != null && value != null) {
       final newTransfer = TransferData(value, accountNumber);
 
-      Navigator.pop(context, newTransfer);
+      Provider.of<TransferList>(context, listen: false)
+          .addTransfer(newTransfer);
+
+      final wasRemoved =
+          Provider.of<Amount>(context, listen: false).remove(newTransfer.value);
+
+      if (wasRemoved)
+        Navigator.pop(context);
+      else
+        _showErrorMessage(context);
     }
+  }
+
+  void _showErrorMessage(BuildContext context) {
+    final snackBar = SnackBar(content: Text('Saldo insuficiente!'));
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 }

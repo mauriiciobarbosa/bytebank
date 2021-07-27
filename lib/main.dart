@@ -1,15 +1,17 @@
 import 'package:bytebank/models/amount.dart';
+import 'package:bytebank/models/transfer_list.dart';
 import 'package:bytebank/screens/dashboard/dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  runApp(
-    ChangeNotifierProvider<Amount>(
-      create: (context) => Amount(20), // which value we will be observing
-      builder: (context, child) => ByteBankApp(), // who should we notify
-    ),
-  );
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(create: (context) => Amount(0)),
+      ChangeNotifierProvider(create: (context) => TransferList()),
+    ],
+    child: ByteBankApp(),
+  ));
 }
 
 class ByteBankApp extends StatelessWidget {
@@ -26,7 +28,7 @@ class ByteBankApp extends StatelessWidget {
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
-            primary: Colors.blueAccent[700],
+            primary: Colors.green,
           ),
         ),
       ),

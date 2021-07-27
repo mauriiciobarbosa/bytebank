@@ -10,7 +10,7 @@ class Deposit extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Deposit'),
+        title: Text('Depósito'),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -18,13 +18,13 @@ class Deposit extends StatelessWidget {
             TransferField(
               controller: valueController,
               maxLength: 20,
-              label: 'Value',
+              label: 'Valor',
               hint: '0.00',
               icon: Icons.monetization_on,
             ),
             ElevatedButton(
               onPressed: () => _doTransfer(context),
-              child: Text('Confirm'),
+              child: Text('Confirmar'),
             )
           ],
         ),

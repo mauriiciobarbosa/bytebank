@@ -1,5 +1,6 @@
 import 'package:bytebank/components/available_amount.dart';
 import 'package:bytebank/screens/deposit/Deposit.dart';
+import 'package:bytebank/screens/transfer/form_screen.dart';
 import 'package:flutter/material.dart';
 
 class Dashboard extends StatelessWidget {
@@ -17,15 +18,30 @@ class Dashboard extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.all(16.0),
-            child: ElevatedButton(
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(
-                  builder: (context) {
-                    return Deposit();
+            child: ButtonBar(
+              alignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(
+                      builder: (context) {
+                        return Deposit();
+                      },
+                    ));
                   },
-                ));
-              },
-              child: Text('Deposit'),
+                  child: Text('Depósito'),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(
+                      builder: (context) {
+                        return TransferFormScreen();
+                      },
+                    ));
+                  },
+                  child: Text('Nova Transferência'),
+                )
+              ],
             ),
           )
         ],

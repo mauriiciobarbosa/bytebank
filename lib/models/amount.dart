@@ -10,9 +10,13 @@ class Amount with ChangeNotifier {
     notifyListeners();
   }
 
-  void remove(double value) {
+  bool remove(double value) {
+    if (_value < value) return false;
+
     _value -= value;
     notifyListeners();
+
+    return true;
   }
 
   @override
