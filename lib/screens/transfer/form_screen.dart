@@ -52,18 +52,19 @@ class TransferFormScreen extends StatelessWidget {
     final double? value = double.tryParse(valueController.text);
 
     if (accountNumber != null && value != null) {
-      final newTransfer = TransferData(value, accountNumber);
-
-      Provider.of<TransferList>(context, listen: false)
-          .addTransfer(newTransfer);
+      final newTransfer =
+          TransferData(accountNumber: accountNumber, value: value);
 
       var amount = Provider.of<Amount>(context, listen: false);
       final wasRemoved = amount.remove(newTransfer.value);
 
-      if (wasRemoved)
+      if (wasRemoved) {
+        Provider.of<TransferList>(context, listen: false)
+            .addTransfer(newTransfer);
         Navigator.pop(context);
-      else
+      } else {
         _showErrorMessage(context, amount);
+      }
     }
   }
 

@@ -14,7 +14,7 @@ class Amount with ChangeNotifier {
   }
 
   bool remove(double value) {
-    if (_value < value) return false;
+    if (_value < value || value <= 0) return false;
 
     _value -= value;
     notifyListeners();
