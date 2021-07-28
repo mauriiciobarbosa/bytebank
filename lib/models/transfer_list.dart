@@ -10,12 +10,4 @@ class TransferList extends ChangeNotifier {
     _transferList.add(newTransfer);
     notifyListeners();
   }
-
-  List<TransferData> sortedList() {
-    final List<TransferData> list = List.from(_transferList, growable: false);
-
-    list.sort((a, b) => b.order.compareTo(a.order));
-
-    return list;
-  }
 }

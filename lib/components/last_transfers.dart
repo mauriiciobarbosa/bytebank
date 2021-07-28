@@ -1,3 +1,4 @@
+import 'package:bytebank/components/no_transfers.dart';
 import 'package:bytebank/components/transfer_item.dart';
 import 'package:bytebank/models/transfer_list.dart';
 import 'package:bytebank/screens/transfer/list_screen.dart';
@@ -15,12 +16,15 @@ class LastTransfers extends StatelessWidget {
         ),
         Consumer<TransferList>(
           builder: (context, transfers, child) {
-            final transfersList = transfers.sortedList();
+            final lastTransfers = transfers.list.reversed.toList();
+
+            if (lastTransfers.isEmpty) return NoTransfer();
+
             return ListView.builder(
               shrinkWrap: true,
-              itemCount: transfersList.length > 2 ? 2 : transfersList.length,
+              itemCount: lastTransfers.length > 2 ? 2 : lastTransfers.length,
               itemBuilder: (context, position) {
-                return TransferItem(transfers.sortedList()[position]);
+                return TransferItem(lastTransfers[position]);
               },
             );
           },
