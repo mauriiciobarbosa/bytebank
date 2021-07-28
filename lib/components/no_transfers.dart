@@ -7,7 +7,10 @@ class NoTransfer extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: Card(
         child: ListTile(
-          title: Text('Você ainda não cadastrou nenhum transferência'),
+          title: Text(
+            'Você ainda não têm nenhuma transferência cadastrada.',
+            textAlign: TextAlign.center,
+          ),
         ),
       ),
     );
